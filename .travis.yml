@@ -8,6 +8,10 @@ branches:
   only:
     - master
 
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
 deploy:
   provider: heroku
   app: habrahabr-topic-352282
